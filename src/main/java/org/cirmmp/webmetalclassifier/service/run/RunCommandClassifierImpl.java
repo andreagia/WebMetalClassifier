@@ -39,6 +39,9 @@ public class RunCommandClassifierImpl implements RunCommandClassifier{
     @Value("${conda.env}")
     private String condaenv;
 
+    @Value("${sh.bin}")
+    private String shbin;
+
     @Value("${condash.env}")
     private String condashenv;
 
@@ -106,7 +109,7 @@ public class RunCommandClassifierImpl implements RunCommandClassifier{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        List<String> cmdexe = Arrays.asList("sh", exesh);
+        List<String> cmdexe = Arrays.asList(shbin, exesh);
         logger.info(cmdexe.stream().reduce("",(a,b) -> a.concat(b).concat(" ")));
         Map<String,String> env = Collections.EMPTY_MAP;
         //env.put("JAVA_HOME",javahome);
